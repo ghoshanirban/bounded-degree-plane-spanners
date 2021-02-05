@@ -1,0 +1,57 @@
+<html>
+<head>
+</head>
+<body>
+  <div id="test">0</div>
+  <div id="playbackControls">
+    <button id="playPause"><span class="play">&#9658;</span></button>
+    <input id="pp" type="range" min="0" max="100" step="1" value="0">
+    <select id="speed">
+      <option value="2">2x</option>
+      <option value="1.5">1.5x</option>
+      <option value="1" selected>1x</option>
+      <option value="0.75">0.75x</option>
+      <option value="0.5">0.5x</option>
+    </select>
+  </div>
+
+  <script>
+   
+
+  </script>
+
+  <style>
+    #pp {
+      width:90vw;
+      max-width:700px;
+    }
+    #test {
+      font-size: 16em;
+      text-align: center;
+    }
+    #playbackControls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #playbackControls > * {
+      margin-left: 10px;
+    }
+    #playPause {
+      width: 30px;
+      height: 30px;
+      padding: 3px;
+      border: 0;
+      border-radius: 18px;
+      margin: 0;
+      text-align: center;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+    .pause {
+      font-size: 0.63em;
+    }
+  </style>
+
+</body>
+</html>
