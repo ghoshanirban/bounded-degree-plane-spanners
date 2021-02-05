@@ -1,0 +1,23 @@
+
+body {
+	background-color: #FEFEFE;
+	color: #333;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.61em;
+	font-family: "MJXZERO", "MJXTEX";
+	line-height: 1.3em;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+li {
+  margin-bottom: 0.36em;
+}
+
+.center {
+  margin: 0 auto;
+}
