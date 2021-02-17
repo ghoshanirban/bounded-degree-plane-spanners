@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Algorithms for constructing bounded-degree plane geometric spanners</title>
+  <!-- JSXGraph script base functionality -->
+  <script type="text/javascript" charset="UTF-8" src="../scripts/jsxgraphcore.js"></script>
+  <!-- MathJax -->
+  <script type="text/javascript" charset="UTF-8" src="../scripts/mathJAX/tex-mml-chtml.js"></script>
+  <script type="text/javascript" src="../scripts/boardObjectStyles.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/about-style.css" >
+  <link rel="stylesheet" type="text/css" href="../css/jsxgraph.css">
+  <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+</head>
+
+  <style>
+.borderexample {
+
+   text-align: justify;
+  text-justify: inter-word;
+}
+
+.rcorners2 {
+  border-radius: 25px;
+  border: 2px solid Tomato;
+  padding: 20px; 
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
+<body style="background-color: #fdfdd4">
+       <h3 style="color:Green" id="legend">\(\textsf{Legend}\)</h3>
+  
+ 
+  <div id="jxgboxLegend" class="jxgboxLegend" style="width:200px; height:125px"></div>
+  <script type="text/javascript">
+
+   //Legend parameters
+   var legendParams = boardParams;
+   legendParams.boundingbox = [0,4.5,4.5,1];
+   legendParams.showNavigation = false;
+
+   //Regular vertex on legend.
+   var legendAVS = activeVertexStyle;
+   legendAVS.withLabel = false;
+   legendAVS.showInfoBox = false;
+
+   //Regular vertex on legend with associated label option.
+   var legendAVSLabel = activeVertexStyle;
+   legendAVSLabel.label = {autoPosition: false, offset:[10, 0]};
+   legendAVSLabel.showInfoBox = false;
+
+   //Highlighted vertex on legend.
+   var legendHPS = worstPathPointStyle;
+   legendHPS.withLabel = false;
+   legendHPS.showInfoBox = false;
+
+   //Highlighted vertex on legend with label option.
+   var legendHPSLabel = worstPathPointStyle;
+   legendHPSLabel.label = {autoPosition: false, offset:[10, 0]};
+   legendHPSLabel.showInfoBox = false;
+
+   //Legend board.
+   legend = JXG.JSXGraph.initBoard("jxgboxLegend",legendParams);
+
+    //Delaunay lines
+    var delaunayPoint1 = legend.create("point", [0.7,4], legendAVS);
+    var delaunayPoint2= legend.create("point", [2.3,4], legendAVSLabel);
+    delaunayPoint2.setLabel("Delaunay edge");
+    var delaunayLine = legend.create("line", [delaunayPoint1, delaunayPoint2], inactiveEdgeStyle);
+
+    //Resultant Lines
+    var activePoint1 = legend.create("point", [0.7,3], legendAVS);
+    var activePoint2= legend.create("point", [2.3,3], legendAVSLabel);
+    activePoint2.setLabel("Spanner edge");
+    var activeLine = legend.create("line", [activePoint1, activePoint2], activeEdgeStyle);
+
+    //Worst Path Lines
+    var highlightPoint1 = legend.create("point", [0.7,2], legendHPS);
+    var highlightPoint2 = legend.create("point", [2.3,2], legendHPSLabel);
+    highlightPoint2.setLabel("An edge from the worst-case detour");
+    var highlightLine = legend.create("line", [highlightPoint1,highlightPoint2], worstPathEdgeStyle);
+
+  </script>
+  <script>
+    MathJax.typeset();
+  </script>
+</body>
+</html>
