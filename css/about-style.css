@@ -1,0 +1,40 @@
+html {
+	font-size: 12pt;
+}
+body {
+	background-color: #FEFEFE;
+	color: #333;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.61em;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+li {
+  margin-bottom: 0.36em;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+ul.fa-ul2 li:before {
+}
+
+.bib ol {
+  counter-reset: list;
+}
+.bib ol > li {
+  list-style: none;
+	position: relative;
+}
+.bib ol > li:before {
+  content: "[" counter(list) "] ";
+  counter-increment: list;
+	position: absolute;
+	left: -2em;
+}
