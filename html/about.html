@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Algorithms for constructing bounded-degree plane geometric spanners</title>
+  <!-- JSXGraph script base functionality -->
+  <script type="text/javascript" charset="UTF-8" src="../scripts/jsxgraphcore.js"></script>
+  <!-- MathJax -->
+  <script type="text/javascript" charset="UTF-8" src="../scripts/mathJAX/tex-mml-chtml.js"></script>
+  <script type="text/javascript" src="../scripts/boardObjectStyles.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/about-style.css" >
+  <link rel="stylesheet" type="text/css" href="../css/jsxgraph.css">
+  <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+  
+  <style>
+.borderexample {
+
+   text-align: justify;
+  text-justify: inter-word;
+}
+
+.rcorners2 {
+  border-radius: 25px;
+  border: 2px solid Tomato;
+  padding: 20px; 
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
+</head>
+<body>
+
+  <h1 style="color:Maroon">\[\textsf{About}\]</h1>
+
+  
+ <p class="rcorners2"> The construction of bounded-degree plane geometric spanners has been been a focus of interest in the field of geometric spanners for a long time. 
+  To date, several algorithms have been designed with various trade-offs in 
+  degree and stretch-factor. Using \(\textsf{JSXGraph}\), a state-of-the-art JavaScript library for geometry, we have implemented seven of these sophisticated algorithms (see below) so that they can be used for research in geometric spanners
+   and teaching computational geometry. Our interactive tool can also be used by researchers from related fields to easily understand and apply these fascinating algorithms in their research.
+   
+   This tool can run on any modern-day browser. However, for the best possible rendering, we recommend using a Chromium-based browser such as Google Chrome. </p>
+    
+
+  <h1 style="color:Maroon" id="toc">\[\textsf{Contents}\]</h1>
+  <ol>
+    <li><a href="#directions">\(\textsf{Using this tool}\)</a></li>
+    <li><a href="#algorithms">\(\textsf{The implemented algorithms}\)</a></li>
+    <li><a href="#bibliography">\(\textsf{References}\)</a></li>
+    <li><a href="#authors">\(\textsf{The developer team}\)</a></li>
+    <li><a href="#ack">\(\textsf{Acknowledgments}\)</a></li>
+  </ol>
+
+<BR>
+<BR>
+
+  <h2 style="color:Maroon" id="directions">\(\textsf{1. Using this tool}\)</h2>
+     
+    <p>There are primarily two steps for using this tool, (i) entering the points, (ii) selecting an algorithm for spanner construction. </p>
+
+    <h3 style="color:Green" id="pointDirections">\(\textsf{(i) Entering and deleting points}\)</h3>
+    
+    <p class="borderexample"> It is assumed that all the points do not lie on the same straight-line. 
+		The tool supports three ways to enter points onto the canvas. The user can use a combination of these three to
+    create a point set for experiments. Among these, the easiest is to just click on the canvas. In this case, the points
+    will be plotted automatically. 
+    The second way is to manually enter the points inside the text-box and hit <b>\(\textsf{PLOT}\)</b>. The third way is to use 
+    randomly generated point sets. If the desired cardinality of a point set is entered in the textbox above the <b>\(\textsf{GENERATE}\)</b>  button, the tool can quickly generate 
+    a point set and plot the points on the canvas when the <b>\(\textsf{GENERATE}\)</b> button is hit. </p>
+    
+    <p class="borderexample">The coordinates of the plotted points are always shown in the text-box. These
+    coordinates can be easily manipulated by the user. If the coordinates of at least one point is manipulated inside the text-box, 
+    the <b>\(\textsf{PLOT}\)</b> button should be hit to see the changes reflected on the board.</p>
+    
+    
+    <p class="borderexample">Deletion of a point can be easily done just by right-clicking on the point. </p>
+    
+    <p class="borderexample"> For convenience, the tool comes with five built-in point sets for performing experiments with the algorithms; see the table next.</p>
+    
+            \[
+  \small{ 
+          \begin{array}{|c|c|}
+    \hline
+    \textsf{Point set} & \textsf{Number of points }\\
+    \hline
+    \hline
+    \text{The example from the paper BGS2005[1]} & 18   \\
+    \hline
+    \text{Top 12 U.S. Cities by Population} & 12   \\
+    \hline
+    \text{U.S. Cities with Population > 100K} & 317   \\
+    \hline
+    \text{100-point Circle} &  100  \\
+    \hline
+    \text{Archimedes Spiral} & 100   \\
+    \hline
+    \end{array}
+} \]
+    
+ <p class="borderexample">Every point is automatically given an integer ID for easy reference on the board. However, the user can turn off this 
+ feature by unchecking the <b>\(\textsf{Show point IDs}\)</b> checkbox.</p>
+ 
+ <p class="borderexample">A useful feature of this tool is that it auto-zooms on the input point set for easier verification of the point set and the generated spanner. The user can also zoom-in/out
+ manually by clicking on the \(\textsf{+}\) and \(\textsf{-}\) buttons at the bottom of the board. </p>
+ 
+     <h3 style="color:Green" id="algorithmDirections">\(\textsf{(ii) Selecting an algorithm for spanner construction}\)</h3>
+    
+      <p class="borderexample"> Once the desired point set is entered and finalized, click the <b>\(\textsf{NEXT}\)</b> button at the bottom.
+          Now one can see a menu of the implemented algorithms to choose from. For reference, we have included a <b>\(\textsf{URL TO THE PAPER}\)</b> button that can take the user
+          to the source paper using its doi.</p>
+    
+    <p class="borderexample">Some of the implemented algorithms need an additonal paramter value for execution. The user can choose the desired parameter value(s) using a slider. We encourage the user to
+    refer to the source paper in order to understand these parameters. Furthermore, for these algorithms, the user can optionally select a step from the selected algorithm  
+    for viewing the intermediate results. </p>
+    
+    <P class="borderexample">Once the algorithm is selected, hitting the <b>\(\textsf{GO}\)</b> button will construct the spanner and draw it on the board. 
+    The spanner edges are shown in a textbox for further use. Every edge in this box is represented using a pair of integers \(i~~j\) where
+    \(i,j \in \{0,1,\ldots,n-1\}\).
+    Additionally, the tool also displays 
+   various properties of the generated spanner such as the number of vertices, number of edges, exact stretch factor, exact degree, 
+   average degree, and lightness (ratio of the weight of the generated spanner to that
+   of the Euclidean minimum spanning tree on the point set).</P>
+   
+   <P class="borderexample">Since these algorithms use edges from a \(L_2\)-Delaunay triangulation of the input point set, we show the Delaunay edges in gray. These edges remain
+   visible even after the spanner is constructed. The \(\textsf{Show Delaunay Edges}\) checkbox can be used to disable the Delaunay edges from the board.</P>
+   
+   <P class="borderexample">The user can add/delete points on this page by clicking on \(\textsf{EDIT POINTS}\). This will take the user to the page
+   where new points can be added or deleted.</P>
+    
+   
+    <h3 style="color:Green" id="screenShotDirections">\(\textsf{Exporting the board as PNG/SVG}\)</h3>
+    
+      <p class="borderexample">The tool allows users to export an image of the board (not necessarily with the spanner) in PNG and SVG formats. To capture an image, simply click either on the <b>\(\textsf{PNG}\)</b> 
+      or on the <b>\(\textsf{SVG}\)</b> button.
+ </p>
+      
+     <h3 style="color:Green" id="legend">\(\textsf{Legend}\)</h3>
+
+When the \(\textsf{LEGEND}\) button is clicked, the following legend is shown to the user for an easy understanding of the generated spanner. This can be turned
+off by clicking on the \(\textsf{+}\), displayed at the top of this pop-up frame.
+ 
+  <div id="jxgboxLegend" class="jxgboxLegend" style="width:200px; height:125px"></div>
+  <script type="text/javascript">
+
+   //Legend parameters
+   var legendParams = boardParams;
+   legendParams.boundingbox = [0,4.5,4.5,1];
+   legendParams.showNavigation = false;
+
+   //Regular vertex on legend.
+   var legendAVS = activeVertexStyle;
+   legendAVS.withLabel = false;
+   legendAVS.showInfoBox = false;
+
+   //Regular vertex on legend with associated label option.
+   var legendAVSLabel = activeVertexStyle;
+   legendAVSLabel.label = {autoPosition: false, offset:[10, 0]};
+   legendAVSLabel.showInfoBox = false;
+
+   //Highlighted vertex on legend.
+   var legendHPS = worstPathPointStyle;
+   legendHPS.withLabel = false;
+   legendHPS.showInfoBox = false;
+
+   //Highlighted vertex on legend with label option.
+   var legendHPSLabel = worstPathPointStyle;
+   legendHPSLabel.label = {autoPosition: false, offset:[10, 0]};
+   legendHPSLabel.showInfoBox = false;
+
+   //Legend board.
+   legend = JXG.JSXGraph.initBoard("jxgboxLegend",legendParams);
+
+    //Delaunay lines
+    var delaunayPoint1 = legend.create("point", [0.7,4], legendAVS);
+    var delaunayPoint2= legend.create("point", [2.3,4], legendAVSLabel);
+    delaunayPoint2.setLabel("Delaunay edge");
+    var delaunayLine = legend.create("line", [delaunayPoint1, delaunayPoint2], inactiveEdgeStyle);
+
+    //Resultant Lines
+    var activePoint1 = legend.create("point", [0.7,3], legendAVS);
+    var activePoint2= legend.create("point", [2.3,3], legendAVSLabel);
+    activePoint2.setLabel("Spanner edge");
+    var activeLine = legend.create("line", [activePoint1, activePoint2], activeEdgeStyle);
+
+    //Worst Path Lines
+    var highlightPoint1 = legend.create("point", [0.7,2], legendHPS);
+    var highlightPoint2 = legend.create("point", [2.3,2], legendHPSLabel);
+    highlightPoint2.setLabel("An edge from the worst-case detour");
+    var highlightLine = legend.create("line", [highlightPoint1,highlightPoint2], worstPathEdgeStyle);
+
+  </script>
+
+
+  <h2 style="color:Maroon" id="algorithms">2. \(\textsf{The implemented algorithms}\)</h2>
+  
+  <p class="borderexample">The following table lists the implemented algorithms, sorted by the degree they guarantee. The best known upper bound of \(1.998\) for 
+  the stretch factor of the \(L_2\)-Delaunay triangulation is used in this table for expressing the stretch factors. 
+   For ease of reference, we 
+  have abbreviated the implemented algorithms using their author names and year of publication.</p>
+  
+  \[
+  \small{ 
+  \begin{array}{|c|c|c|}
+  \hline
+  \textsf{Reference} & \textsf{Degree} & \textsf{Upper bound on stretch factor }\\
+  \hline
+  \hline
+  \text{ Bose, Gudmundsson, and Smid }\text{(BGS2005)[1]} &  27 & 1.998(\pi+1)\approx 8.3   \\
+  \hline
+  \text{ Li and Wang } \text{(LW2004)[2]}&
+  23 & 1.998(1 + \frac{\pi}{\sqrt{2}})\approx 6.4   \\
+  \hline
+  \text{ Bose, Smid, and Xu }\text{(BSX2009)[3]}  &
+  17 & 1.998(2+2\sqrt{3}+\frac{3\pi}{2} + 2\pi \sin \frac{\pi}{12}) \approx 23.6   \\
+  \hline
+  \text{ Kanj,  Perkovic, and Xia }\text{(KPX2010)[4]} &
+  14 & 1.998 (1 + \frac{2\pi}{14 \cos (\pi/14)})\approx 2.9   \\
+  \hline
+  \text{Bose,  Hill, and Smid }\text{(BHS2017)[5]}  &
+  8 & 1.998 \left( 1 + \frac{2\pi}{6 \cos (\pi/6) } \right) \approx 4.4   \\
+  \hline
+  \text{ Bose,  Carmi, and Chaitman-Yerushalmi }\text{(BCC2012)[6]} &
+  7 & 1.998 (1 + \sqrt{2})^2 \approx 11.6   \\
+  \hline
+  \text{ Bose,  Carmi, and Chaitman-Yerushalmi }\text{(BCC2012)[6]}  &
+  6 & 1.998 \left(\frac{1}{1-\tan (\pi/7)(1 + 1/\cos (\pi/14))} \right)\approx 81.7   \\
+  \hline
+  \end{array}
+ }
+ \]
+ 
+  <div  class="borderexample" id="bibliography" class="bib">
+    
+    <h2 style="color:Maroon"id="bib">\(\textsf{3. References}\)</h2>
+    <ol>
+      <li>
+        Prosenjit Bose, Joachim Gudmundsson, and Michiel Smid. Constructing plane spanners of bounded degree and low weight. Algorithmica, 42: 249–264, 2005. doi: <a href="https://doi.org/10.1007/s00453-005-1168-8" target="_blank">10.1007/s00453-005-1168-8</a>.
+      </li>
+      <li>
+        Xiang-Yang Li and Yu Wang. Efficient construction of low weighted bounded degree planar spanner. International Journal of Computational Geometry & Applications, 14(1): 69–84, 2004. doi: <a href="https://doi.org/10.1142/S0218195904001366" target="_blank">10.1142/S0218195904001366</a>.
+      </li>
+      <li>
+        Prosenjit Bose, Michiel Smid, and Daming Xu.  Delaunay and diamond triangulations contain spanners of bounded degree. International Journal of Computational Geometry & Applications, 19(2): 119–140, 2009. doi: <a href="https://doi.org/10.1142/S0218195909002861" target="_blank">10.1142/S0218195909002861</a>.
+      </li>
+      <li>
+        Iyad Kanj, Ljubomir Perkovic, and Ge Xia.  On spanners and lightweight spanners of geometric graphs. SIAM Journal on Computing, 39(6): 2132–2161, 2010. doi: <a href="https://doi.org/10.1137/080737708" target="_blank">10.1137/080737708</a>.
+      </li>
+      <li>
+        Prosenjit Bose, Paz Carmi, and Lilach Chaitman-Yerushalmi. On bounded degree plane strong geometric spanners. Journal of Discrete Algorithms, 15: 16–31, 2012. doi: <a href="https://doi.org/10.1016/j.jda.2012.03.004" target="_blank">10.1016/j.jda.2012.03.004</a>.
+      </li>
+      <li>
+        Prosenjit Bose, Darryl Hill, and Michiel Smid. Improved spanning ratio for low degree plane spanners. Algorithmica, 80: 935–976, 2018. doi: <a href="https://doi.org/10.1007/s00453-017-0305-5" target="_blank">10.1007/s00453-017-0305-5</a>.
+      </li>
+      
+       <!-- <li>
+        Bonichon N., Gavoille C., Hanusse N., Perković L. (2010) Plane Spanners of Maximum Degree Six. In: Abramsky S., Gavoille C., Kirchner C., Meyer auf der Heide F., Spirakis P.G. (eds) Automata, Languages and Programming. ICALP 2010. Lecture Notes in Computer Science, vol 6198. Springer, Berlin, Heidelberg. doi: <a href="https://doi.org/10.1007/978-3-642-14165-2_3" target="_blank">10.1007/978-3-642-14165-2_3</a>.
+      </li>
+    <li>
+        Bonichon, N., Kanj, I., Perkovic, L. et al. There are Plane Spanners of Degree 4 and Moderate Stretch Factor. Discrete Comput Geom 53, 514–546 (2015). doi: <a href="https://doi.org/10.1007/s00454-015-9676-z" target="_blank">10.1007/s00454-015-9676-z</a>.
+      </li> 
+      <li>
+        Iyad Kanj, Ljubomir Perkovic, and Duru Türkoglu. Degree Four Plane Spanners: Simpler and Better. In Sándor Fekete and Anna Lubiw, (eds) 32nd In-ternational Symposium on Computational Geometry (SoCG 2016). Leibniz International Proceedings in Informatics (LIPIcs), vol 51, pages 45:1–45:15. Dagstuhl, Germany, 2016. Schloss Dagstuhl–Leibniz-Zentrum fuerInformatik. ISBN 978-3-95977-009-5. doi: <a href="https://doi.org/10.4230/LIPIcs.SoCG.2016.45" target="_blank">10.4230/LIPIcs.SoCG.2016.45</a>.
+      </li> -->
+
+
+    </ol>
+  </div>
+
+
+  <h2 style="color:Maroon" id="authors">\(\textsf{4. The developer team (sorted lexicographically on the last names)}\) </h2>
+  <ul>
+    <li>Fred Anderson</li>
+    <li>Anirban Ghosh</li>
+    <li>Matthew Graham</li>
+    <li>Lucas Mougeot</li>
+    <li>David Wisnosky</li>
+  </ul>
+  School of Computing<BR>
+  University of North Florida<BR>
+  Jacksonville, Florida, USA
+
+  <h2 style="color:Maroon" id="ack">\(\textsf{5. Acknowledgments}\)</h2>
+  <ul>
+    <li class="borderexample">Research on this paper is supported by the NSF award CCF-1947887
+    and by the University of North Florida Academic Technology Grant.</li>
+    <li class="borderexample"> We express our sincere thanks to the <a href="https://jsxgraph.org/" target="_blank">JSXGraph</a> developers, the <a href="https://www.mathjax.org/" target="_blank">
+    MathJAX</a> developers, and also to the developers of <a href="https://mapbox.github.io/delaunator/" target="_blank">Delaunator</a> 
+    (used for constructing Delaunay triangulations).</li>
+  </ul>
+
+  <p>\(\textsf{Last edited: Wed Feb 17 00:17:52 EST 2021}\)</p>
+  <script>
+    MathJax.typeset();
+  </script>
+
+</body>
+</html>
