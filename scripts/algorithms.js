@@ -163,8 +163,8 @@ function goButtonListener() {
   var resultString = "";
   resultString += '<span class="singleResult">\\(|V|: '+metrics.N+'\\)</span> \n';
   resultString += '<span class="singleResult">\\(|E|: '+metrics.size+'\\) </span> \n';
-  resultString += '<span class="singleResult"> \\(\\textsf{Exact stretch factor:}\\) \\( '+metrics.stretchFactor.t.toFixed(3)+'\\) </span> \n';
-  resultString += '<span class="singleResult"> \\(\\textsf{Exact degree:}\\) \\( '+metrics.max_degree+'\\) </span> \n';
+  resultString += '<span class="singleResult"> \\(\\textsf{Stretch factor:}\\) \\( '+metrics.stretchFactor.t.toFixed(3)+'\\) </span> \n';
+  resultString += '<span class="singleResult"> \\(\\textsf{Degree:}\\) \\( '+metrics.max_degree+'\\) </span> \n';
   resultString += '<span class="singleResult">\\(\\textsf{Average degree:}\\) \\( '+metrics.avg_degree+'\\) </span> \n';
   resultString += '<span class="singleResult">\\(\\textsf{Lightness:}\\) \\( '+ metrics.wtToMST +'\\) </span> \n';
   algorithmResults.innerHTML = resultString;

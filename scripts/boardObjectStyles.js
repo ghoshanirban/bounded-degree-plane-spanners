@@ -1,5 +1,5 @@
 var boardParams = {
-   boundingbox: [-16,16,16,-16],
+   boundingbox: [-18,18,18,-18],
    keepAspectRatio: true,
    axis: false,
    showCopyright: false,

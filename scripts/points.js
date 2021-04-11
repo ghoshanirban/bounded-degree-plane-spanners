@@ -80,7 +80,7 @@ function updatePointTextbox( points = pointSet ) {
 }
 
 //Redone!
-//Genarates a random point within a square denoted by provided bounds.
+//Generate a random point within a square denoted by provided bounds.
 function randomPointGen(xBound, yBound){
   var xPolarity = Math.random();
   var yPolarity = Math.random();
@@ -99,12 +99,13 @@ function randomPointGen(xBound, yBound){
 }
 
 //Redone!
-//Genarates a pointset with n points.
+//Generate a pointset with n points.
 function genRandPointSet(nPoints){
   var points = [];
   var boundingBox = board.getBoundingBox();
   var xBound = Math.max(Math.abs(boundingBox[0]), Math.abs(boundingBox[2]));
   var yBound = Math.max(Math.abs(boundingBox[1]), Math.abs(boundingBox[3]));
+  console.log(yBound);
   for(var i=0; i<nPoints; i++){
     var point = randomPointGen(xBound, yBound);
     points.push(point);

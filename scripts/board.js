@@ -455,14 +455,10 @@ function screenShot(type){
       setTimeout(function(){downloadScreenShot("img", tgtImage.src, "png")}, 1000);
   }
 
-  //console.log(tgtImage.src);
-
 }
 
 //Creates a hidden link tag for automatic download upon screen shot.
 function downloadScreenShot(filename, text, type) {
-
-  //console.log(document.getElementById("screenShotImg").src);
 
     var element = document.createElement('a');
     if(type == "svg"){
