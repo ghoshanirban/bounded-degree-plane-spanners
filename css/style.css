@@ -252,6 +252,20 @@ p.option {
 	border-width: 5px;
 	margin:15px;
 }
+
+.nextButton{
+	background-color: #04A777;
+	color: #ccc;
+	text-transform: uppercase;
+	padding: 12px 10px;
+	border-radius: 25px;
+	font-size: 1em;
+	border-width: 3px;
+	margin:5px;
+	min-width: 3em;
+	font-weight: 600;
+}
+
 .optionSeparator {
 	height: 3px;
 	width: calc(100% - 5px);
